@@ -158,20 +158,20 @@ This concludes the first part of the installation. You will now need to build Ar
 Again, we modified the official instructions to let it function with ROS2 Jazzy. Official guide: https://ardupilot.org/dev/docs/ros2-sitl.html
 
 ```bash
-cd ardu_ws/src/ardupilot
+cd ~/ardu_ws/src/ardupilot
 ./Tools/environment_install/install-prereqs-ubuntu.sh -y
 ```
 
 ```bash
 cd ~/ardu_ws
-source ./install/setup.bash
+source /opt/ros/jazzy/setup.bash
+colcon build --packages-up-to ardupilot_sitl
+source ~/.profile
 ```
 
 You can now launch the SITL in ROS2 with the following commands:
 ```bash
-source /opt/ros/jazzy/setup.bash
 cd ~/ardu_ws/
-colcon build --packages-up-to ardupilot_sitl
 source install/setup.bash
 ros2 launch ardupilot_sitl sitl_dds_udp.launch.py \
 transport:=udp4 \
@@ -204,7 +204,7 @@ To test and fly around, you can launch a MAVProxy instance in yet another termin
 mavproxy.py --console --map --aircraft test --master=:14550
 ```
 
-The final step is to install Gazebo
+The final step is to install Gazebo.
 
 ## Installing Gazebo
 The official ArduPilot guide for ROS2+Gazebo uses Gazebo Harmonic version, which works with ROS2 Jazzy. Again, be sure to install required dependencies for ROS2 Jazzy, not ROS2 Humble.
@@ -221,7 +221,7 @@ sudo apt-get update
 sudo apt-get install gz-harmonic
 ```
 
-Gazebo for ROS2 installation:
+Installation of Gazebo for ROS2:
 ```bash
 sudo apt-get install ros-jazzy-ros-gz
 ```
