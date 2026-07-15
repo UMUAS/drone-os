@@ -240,6 +240,7 @@ git clone --recurse-submodules -b jazzy https://github.com/ros/sdformat_urdf.git
 Run to add in ~/.bashrc
 ```bash
 echo "export GZ_VERSION=harmonic" >> ~/.bashrc
+
 source ~/.bashrc
 ```
 
@@ -248,7 +249,10 @@ Update ROS and Gazebo dependencies:
 cd ~/ardu_ws
 source /opt/ros/jazzy/setup.bash
 sudo apt update
+
+sudo bash -c 'wget https://raw.githubusercontent.com/osrf/osrf-rosdep/master/gz/00-gazebo.list -O /etc/ros/rosdep/sources.list.d/00-gazebo.list'
 rosdep update
+rosdep resolve gz-harmonic
 rosdep install --from-paths src --ignore-src -y
 ```
 
