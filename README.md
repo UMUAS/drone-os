@@ -42,6 +42,7 @@ The recommended workflow is:
 
 Simulation should always be completed before hardware testing.
 
+
 # Getting Started
 Developing the software does not require physical hardware. ArduPilot SITL and Gazebo can be used to simulate drone behaviour, which can reduce risks when flying on the drone. 
 
@@ -68,7 +69,7 @@ If you want to run Ubuntu 24.04 LTS on your computer, there are a few options:
 Once you installed Ubuntu 24.04 LTS, we will now install ROS2 Jazzy. Jazzy is not the latest version, but is still newer version than ROS2 Humble which is used in the ArduPilot tutorial. 
 
 First, you will need to follow the instructions on how to install ROS2: https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html
-> [!NOTE]
+> [!IMPORTANT]
 > When given the option, you should choose to run ```sudo apt install ros-jazzy-desktop``` instead of ```sudo apt install ros-jazzy-ros-base```.
 
 By now, every time you want to access ROS2 commands in the terminal, you first need to source the setup file. This can be automated by running the following in your terminal:
@@ -105,6 +106,28 @@ cd ~/ardu_ws
 git clone --recurse-submodules --branch v4.7.0 https://github.com/ardupilot/Micro-XRCE-DDS-Gen.git
 cd Micro-XRCE-DDS-Gen
 ./gradlew assemble
+```
+
+> [!TIP]
+> If `./gradlew assemble` gives issues, some possible causes are:
+> 
+> The current Java version is too new for _Gradle 7.6_, which should be Java17. To fix:
+> ```bash
+> sudo apt install openjdk-17-jdk java-common
+> sudo update-alrternatives --config java
+> ```
+> Select the option with **java 17**. Lastly, run:
+> ```bash
+> cd ~/ardu_ws/Micro-XRCE-DDS-Gen
+> export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+> ./gradlew assemble
+> ```
+> 
+> You might also be missing pexpect. To fix: 
+> `python3 -m pip install --user pexpect` or `sudo apt install python3-pexpect`
+
+Now, add the _Micro-XRCE-DDS-Gen_ scripts to ~/.bashrc:
+```bash
 echo "export PATH=\$PATH:$PWD/scripts" >> ~/.bashrc
 source ~/.bashrc
 ```
@@ -112,6 +135,7 @@ source ~/.bashrc
 Test _Micro-XRCE-DDS-Gen_ installation:
 ```bash
 microxrceddsgen -help
+# This should print out a help message
 ```
 
 And finally, build your workspace:
