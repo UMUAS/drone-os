@@ -60,8 +60,9 @@ If you want to run Ubuntu 24.04 LTS on your computer, there are a few options:
   - Docker
 
 > [!NOTE]
-> Currently (we) do not have a guide on how to install Ubuntu and ROS2 using Docker, but we plan to implement it as it provides the simplest installation and consistency between all computers.
-> We also plan to have an automated script for the installation process to make it easier for non-Docker installations.
+> If you decide to use Docker, you will need to perform the installation process yourself and compose your own Docker images. However, support for Docker is being considered because Docker provides the simplest installation process and best consistency across different machines.
+> 
+> We also plan to provide an automated installation script in the future to simplify the setup process for non-Docker installations.
 
 ## Installing ROS2 Jazzy
 Once you installed Ubuntu 24.04 LTS, we will now install ROS2 Jazzy. Jazzy is not the latest version, but is still newer version than ROS2 Humble which is used in the ArduPilot tutorial. 
