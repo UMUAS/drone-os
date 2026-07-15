@@ -92,6 +92,7 @@ Now update all dependencies for _micro-ROS-Agent_:
 ```bash
 cd ~/ardu_ws
 sudo apt update
+sudo rosdep init
 rosdep update
 source /opt/ros/jazzy/setup.bash
 rosdep install --from-paths src --ignore-src -r -y
