@@ -149,7 +149,6 @@ colcon build --packages-up-to ardupilot_sitl
 source install/setup.bash
 ros2 launch ardupilot_sitl sitl_dds_udp.launch.py \
 transport:=udp4 \
-refs:=$(ros2 pkg prefix ardupilot_sitl)/share/ardupilot_sitl/config/dds_xrce_profile.xml \
 synthetic_clock:=True \
 wipe:=False \
 model:=quad \
@@ -204,12 +203,10 @@ sudo apt-get install ros-jazzy-ros-gz
 Clone required repositories:
 ```bash
 cd ~/ardu_ws/src
-git clone --recurse-submodules -b master https://github.com/ArduPilot/ardupilot.git
 git clone --recurse-submodules -b ros2 https://github.com/ArduPilot/ardupilot_gazebo.git
 git clone --recurse-submodules -b main https://github.com/ArduPilot/ardupilot_gz.git
 git clone --recurse-submodules -b main https://github.com/ArduPilot/SITL_Models.git
 
-git clone --recurse-submodules -b jazzy https://github.com/micro-ROS/micro-ROS-Agent.git
 git clone --recurse-submodules -b jazzy https://github.com/gazebosim/ros_gz.git
 git clone --recurse-submodules -b jazzy https://github.com/ros/sdformat_urdf.git
 ```
@@ -228,10 +225,10 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-
 sudo apt update
 ```
 
-Add Gazebo sources to rosdep for the non-default pairing of ROS 2 Humble and Gazebo Harmonic.
+~~Add Gazebo sources to rosdep for the non-default pairing of ROS 2 Humble and Gazebo Harmonic.~~
 ```bash
-sudo wget https://raw.githubusercontent.com/osrf/osrf-rosdep/master/gz/00-gazebo.list -O /etc/ros/rosdep/sources.list.d/00-gazebo.list
-rosdep update
+#not needed? sudo wget https://raw.githubusercontent.com/osrf/osrf-rosdep/master/gz/00-gazebo.list -O /etc/ros/rosdep/sources.list.d/00-gazebo.list
+#not needed? rosdep update
 ```
 
 Update ROS and Gazebo dependencies:
@@ -262,6 +259,12 @@ Run:
 source install/setup.bash
 ros2 launch ardupilot_gz_bringup iris_runway.launch.py
 ```
+
+If launching iris_runway does not show a drone inside Gazebo and RViz, it probably is because it coudln't access the drone model. To do so, run:
+```bash
+export GZ_SIM_RESOURCE_PATH=$GZ_SIM_RESOURCE_PATH:~/ardu_ws/install/ardupilot_gazebo/share
+```
+For some reason, `echo $GZ_SIM_RESOURCE_PATH` only includes the worlds/ and models/ directories that are inside the share/ directory.
 
 # Running on a drone
 Deploying the software on the drone is supposed to be similar to the simulation and development stage. The main difference is that during deployment, the software needs to access the physical components instead of the simulated components. This will be achieved using common interfaces.
