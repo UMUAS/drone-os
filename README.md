@@ -217,20 +217,6 @@ echo "export GZ_VERSION=harmonic" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-Add Gazebo APT sources.
-```bash
-sudo apt install wget
-wget https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
-sudo apt update
-```
-
-~~Add Gazebo sources to rosdep for the non-default pairing of ROS 2 Humble and Gazebo Harmonic.~~
-```bash
-#not needed? sudo wget https://raw.githubusercontent.com/osrf/osrf-rosdep/master/gz/00-gazebo.list -O /etc/ros/rosdep/sources.list.d/00-gazebo.list
-#not needed? rosdep update
-```
-
 Update ROS and Gazebo dependencies:
 ```bash
 cd ~/ardu_ws
