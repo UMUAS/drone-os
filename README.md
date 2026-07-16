@@ -283,6 +283,9 @@ export GZ_SIM_RESOURCE_PATH=$GZ_SIM_RESOURCE_PATH:~/ardu_ws/install/ardupilot_ga
 ```
 For some reason, `echo $GZ_SIM_RESOURCE_PATH` only includes the worlds/ and models/ directories that are inside the share/ directory. This step fixed that temporarily. You can also add it into `~/.bashrc` to make the change permanent. This might be an ArduPilot mistake generated during the "colcon build".
 
+<img width="1919" height="1031" alt="image" src="https://github.com/user-attachments/assets/ce74058a-3809-40cb-ac5c-ad301a3836a0" />
+
+
 # Running on a drone
 Deploying the software on the drone is supposed to be similar to the simulation and development stage. The main difference is that during deployment, the software needs to access the physical components instead of the simulated components. This will be achieved using common interfaces.
 
