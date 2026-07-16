@@ -232,6 +232,7 @@ cd ~/ardu_ws/src
 git clone --recurse-submodules -b ros2 https://github.com/ArduPilot/ardupilot_gazebo.git
 git clone --recurse-submodules -b main https://github.com/ArduPilot/ardupilot_gz.git
 git clone --recurse-submodules -b main https://github.com/ArduPilot/SITL_Models.git
+mv SITL_Models ardupilot_sitl_models
 
 git clone --recurse-submodules -b jazzy https://github.com/gazebosim/ros_gz.git
 git clone --recurse-submodules -b jazzy https://github.com/ros/sdformat_urdf.git
