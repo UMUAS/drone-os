@@ -1,1 +1,0 @@
-# TODO Obstacle/collision avoidance

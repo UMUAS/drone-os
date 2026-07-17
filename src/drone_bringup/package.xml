@@ -3,7 +3,7 @@
 <package format="3">
   <name>drone_bringup</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>TODO: Launch files whose goal is to start the drone</description>
   <maintainer email="triangle@todo.todo">triangle</maintainer>
   <license>Apache-2.0</license>
 

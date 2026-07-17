@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'autonomy'
+package_name = 'umuas_autonomy'
 
 setup(
     name=package_name,
@@ -24,7 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'my_node = autonomy.my_node:main'
+            'my_node = umuas_autonomy.autonomy_node:main'
         ],
     },
 )
