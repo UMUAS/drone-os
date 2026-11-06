@@ -15,8 +15,8 @@ setup(
     zip_safe=True,
     maintainer='triangle',
     maintainer_email='triangle@todo.todo',
-    description='TODO: UMUAS perception solutions, such as target detection and position estimation',
-    license='Apache-2.0',
+    description='UMUAS perception solutions, such as target detection and position estimation',
+    license='MIT',
     extras_require={
         'test': [
             'pytest',
@@ -24,8 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'perception_node = umuas_perception.perception_node:main'
-            'aruco_node = umuas_perception.aruco_node:main'
+            #'perception_node = umuas_perception.perception_node:main'
+            #'aruco_node = umuas_perception.aruco_node:main'
         ],
     },
 )

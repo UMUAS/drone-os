@@ -27,8 +27,13 @@ def calibrate(dirpath, square_size, width, height, visualize=False):
 
     images = os.listdir(dirpath)
 
+    gray = None
     for fname in images:
         img = cv2.imread(os.path.join(dirpath, fname))
+
+        if img is None:
+            continue
+        
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
         # Find the chess board corners
@@ -48,7 +53,9 @@ def calibrate(dirpath, square_size, width, height, visualize=False):
             cv2.imshow('img',img)
             cv2.waitKey(0)
 
-
+    if gray is None:
+        return None
+    
     ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
 
     return [ret, mtx, dist, rvecs, tvecs]
@@ -76,10 +83,14 @@ if __name__ == '__main__':
     else:
         visualize = False
 
-    ret, mtx, dist, rvecs, tvecs = calibrate(dirpath, square_size, visualize=visualize, width=width, height=height)
+    calibration_results = calibrate(dirpath, square_size, visualize=visualize, width=width, height=height)
+    if calibration_results is not None:
+        ret, mtx, dist, rvecs, tvecs = calibration_results
 
-    print(mtx)
-    print(dist)
+        print('Calibration matrix:')
+        print(mtx)
+        print('Distortion coefficients:')
+        print(dist)
 
-    np.save("calibration_matrix", mtx)
-    np.save("distortion_coefficients", dist)
+        np.save("calibration_matrix", mtx)
+        np.save("distortion_coefficients", dist)

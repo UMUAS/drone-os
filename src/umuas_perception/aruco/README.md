@@ -1,3 +1,5 @@
+Original repository: https://github.com/histri/ArUCo-Markers-Pose-Estimation-Generation-Python
+
 # ArUCo-Markers-Pose-Estimation-Generation-Python
 
 This repository contains all the code you need to generate an ArucoTag,

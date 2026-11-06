@@ -18,8 +18,8 @@ setup(
     zip_safe=True,
     maintainer='umuas',
     maintainer_email='umuas.captain@gmail.com',
-    description='TODO: Package description',
-    license='Apache-2.0',
+    description='Drone Bringup',
+    license='MIT',
     extras_require={
         'test': [
             'pytest',

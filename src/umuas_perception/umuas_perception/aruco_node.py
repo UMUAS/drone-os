@@ -1,6 +1,6 @@
-#TODO wrap aruco code. It should output 3D position
-
 #!/usr/bin/env python3
+
+#TODO wrap aruco code. It should output 3D position
 
 import rclpy
 

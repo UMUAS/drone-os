@@ -19,6 +19,8 @@ args = vars(ap.parse_args())
 
 print("Loading image...")
 image = cv2.imread(args["image"])
+assert image is not None, 'Image source not found'
+
 h,w,_ = image.shape
 width=600
 height = int(width*(h/w))

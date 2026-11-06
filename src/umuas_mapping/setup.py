@@ -16,7 +16,7 @@ setup(
     maintainer='triangle',
     maintainer_email='triangle@todo.todo',
     description='TODO: UMUAS mapping solutions, such as 3D mapping and SLAM',
-    license='Apache-2.0',
+    license='MIT',
     extras_require={
         'test': [
             'pytest',
